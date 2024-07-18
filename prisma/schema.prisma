@@ -12,3 +12,124 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id          String     @id @default(uuid()) @db.Uuid
+  nome        String     @db.VarChar(100)
+  email       String     @unique @db.VarChar(100)
+  senha       String     @db.VarChar(100)
+  reputacao   Decimal?   @db.Decimal(3, 1)
+  usuariosCargos   UsuarioCargo[]
+  usuariosPermissoes UsuarioPermissao[]
+  livrosDesejados LivroDesejado[]
+  livros       Livro[]
+  avaliacaoLivros AvaliacaoLivro[]
+  reputacoesDe ReputacaoUsuario[] @relation("UsuarioDe")
+  reputacoesPara ReputacaoUsuario[] @relation("UsuarioPara")
+  trocaPedidosDe TrocaPedido[] @relation("UsuarioDe")
+  trocaPedidosPara TrocaPedido[] @relation("UsuarioPara")
+}
+
+model Cargo {
+  id          Int        @id @default(autoincrement())
+  nome        String     @unique @db.VarChar(100)
+  descricao   String     @db.VarChar(100)
+  usuariosCargos   UsuarioCargo[]
+  cargosPermissoes CargoPermissao[]
+}
+
+model Permissao {
+  id          Int        @id @default(autoincrement())
+  nome        String     @unique @db.VarChar(100)
+  descricao   String     @db.VarChar(100)
+  usuariosPermissoes UsuarioPermissao[]
+  cargosPermissoes CargoPermissao[]
+}
+
+model UsuarioCargo {
+  id          Int        @id @default(autoincrement())
+  usuarioId   String
+  cargoId     Int
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
+}
+
+model UsuarioPermissao {
+  id          Int        @id @default(autoincrement())
+  usuarioId   String
+  permissaoId Int
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
+}
+
+model CargoPermissao {
+  id          Int        @id @default(autoincrement())
+  cargoId     Int
+  permissaoId Int
+  cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
+  permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
+}
+
+model LivroDesejado {
+  id          Int        @id @default(autoincrement())
+  usuarioId   String
+  titulo      String     @db.VarChar(200)
+  autor       String     @db.VarChar(100)
+  linkCapa    String?    @db.VarChar(100)
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+model Livro {
+  id          Int        @id @default(autoincrement())
+  titulo      String     @db.VarChar(200)
+  autor       String     @db.VarChar(100)
+  usuarioId   String
+  linkCapa    String?    @db.VarChar(100)
+  editora     String?    @db.VarChar(100)
+  genero      String?    @db.VarChar(100)
+  paginas     Int?
+  avaliacao   Decimal?     @db.Decimal(3, 1)
+  disponibilidade Boolean @default(true)
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  avaliacaoLivros AvaliacaoLivro[]
+  trocaPedidosDe TrocaPedido[] @relation("LivroDe")
+  trocaPedidosPara TrocaPedido[] @relation("LivroPara")
+}
+
+model AvaliacaoLivro {
+  id          Int        @id @default(autoincrement())
+  livroId     Int
+  usuarioId   String
+  avaliacao   Decimal      @db.Decimal(3, 1)
+  comentario  String?    @db.VarChar(500)
+  livro       Livro      @relation(fields: [livroId], references: [id], onDelete: Cascade)
+  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+model TrocaPedido {
+  id              Int        @id @default(autoincrement())
+  usuarioDeId     String
+  livroDeId       Int
+  usuarioParaId   String
+  livroParaId     Int
+  status          String     @default("pendente") @db.VarChar(10)
+  criadoEm        DateTime   @default(now())
+  atualizadoEm    DateTime   @updatedAt
+  usuarioDe       Usuario    @relation("UsuarioDe", fields: [usuarioDeId], references: [id], onDelete: Cascade)
+  livroDe         Livro      @relation("LivroDe", fields: [livroDeId], references: [id], onDelete: Cascade)
+  usuarioPara     Usuario    @relation("UsuarioPara", fields: [usuarioParaId], references: [id], onDelete: Cascade)
+  livroPara       Livro      @relation("LivroPara", fields: [livroParaId], references: [id], onDelete: Cascade)
+  reputacoes      ReputacaoUsuario[]
+}
+
+model ReputacaoUsuario {
+  id              Int        @id @default(autoincrement())
+  trocaId         Int
+  usuarioDeId     String
+  usuarioParaId   String
+  avaliacao       Decimal      @db.Decimal(3, 1)
+  comentario      String?    @db.VarChar(500)
+  troca           TrocaPedido @relation(fields: [trocaId], references: [id])
+  usuarioDe       Usuario    @relation("UsuarioDe", fields: [usuarioDeId], references: [id], onDelete: Cascade)
+  usuarioPara     Usuario    @relation("UsuarioPara", fields: [usuarioParaId], references: [id], onDelete: Cascade)
+}
