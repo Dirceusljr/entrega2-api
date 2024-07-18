@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,11 +8,11 @@ datasource db {
 }
 
 model Usuario {
-  id          String     @id @default(uuid()) @db.Uuid
+  id          String     @id @default(uuid())
   nome        String     @db.VarChar(100)
   email       String     @unique @db.VarChar(100)
   senha       String     @db.VarChar(100)
-  reputacao   Decimal?   @db.Decimal(3, 1)
+  reputacao   Decimal?     @db.Decimal(3, 1)
   usuariosCargos   UsuarioCargo[]
   usuariosPermissoes UsuarioPermissao[]
   livrosDesejados LivroDesejado[]
@@ -48,7 +42,7 @@ model Permissao {
 
 model UsuarioCargo {
   id          Int        @id @default(autoincrement())
-  usuarioId   String
+  usuarioId   String     @default(uuid())
   cargoId     Int
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
@@ -56,7 +50,7 @@ model UsuarioCargo {
 
 model UsuarioPermissao {
   id          Int        @id @default(autoincrement())
-  usuarioId   String
+  usuarioId   String     @default(uuid())
   permissaoId Int
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
@@ -72,7 +66,7 @@ model CargoPermissao {
 
 model LivroDesejado {
   id          Int        @id @default(autoincrement())
-  usuarioId   String
+  usuarioId   String     @default(uuid())
   titulo      String     @db.VarChar(200)
   autor       String     @db.VarChar(100)
   linkCapa    String?    @db.VarChar(100)
@@ -83,7 +77,7 @@ model Livro {
   id          Int        @id @default(autoincrement())
   titulo      String     @db.VarChar(200)
   autor       String     @db.VarChar(100)
-  usuarioId   String
+  usuarioId   String     @default(uuid())
   linkCapa    String?    @db.VarChar(100)
   editora     String?    @db.VarChar(100)
   genero      String?    @db.VarChar(100)
@@ -99,7 +93,7 @@ model Livro {
 model AvaliacaoLivro {
   id          Int        @id @default(autoincrement())
   livroId     Int
-  usuarioId   String
+  usuarioId   String     @default(uuid())
   avaliacao   Decimal      @db.Decimal(3, 1)
   comentario  String?    @db.VarChar(500)
   livro       Livro      @relation(fields: [livroId], references: [id], onDelete: Cascade)
@@ -108,13 +102,13 @@ model AvaliacaoLivro {
 
 model TrocaPedido {
   id              Int        @id @default(autoincrement())
-  usuarioDeId     String
+  usuarioDeId     String     @default(uuid())
   livroDeId       Int
-  usuarioParaId   String
+  usuarioParaId   String     @default(uuid())
   livroParaId     Int
   status          String     @default("pendente") @db.VarChar(10)
   criadoEm        DateTime   @default(now())
-  atualizadoEm    DateTime   @updatedAt
+  atualizadoEm    DateTime   @default(now())
   usuarioDe       Usuario    @relation("UsuarioDe", fields: [usuarioDeId], references: [id], onDelete: Cascade)
   livroDe         Livro      @relation("LivroDe", fields: [livroDeId], references: [id], onDelete: Cascade)
   usuarioPara     Usuario    @relation("UsuarioPara", fields: [usuarioParaId], references: [id], onDelete: Cascade)
@@ -125,8 +119,8 @@ model TrocaPedido {
 model ReputacaoUsuario {
   id              Int        @id @default(autoincrement())
   trocaId         Int
-  usuarioDeId     String
-  usuarioParaId   String
+  usuarioDeId     String     @default(uuid())
+  usuarioParaId   String     @default(uuid())
   avaliacao       Decimal      @db.Decimal(3, 1)
   comentario      String?    @db.VarChar(500)
   troca           TrocaPedido @relation(fields: [trocaId], references: [id])
