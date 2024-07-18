@@ -8,5 +8,8 @@
   "keywords": [],
   "author": "Equipe Library Loops",
   "license": "ISC",
-  "description": "Entrega 2 do Bootcamp da Avanti - Backend API"
+  "description": "Entrega 2 do Bootcamp da Avanti - Backend API",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
