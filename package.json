@@ -11,5 +11,8 @@
   "description": "Entrega 2 do Bootcamp da Avanti - Backend API",
   "dependencies": {
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
