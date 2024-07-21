@@ -22,59 +22,73 @@ model Usuario {
   reputacoesPara ReputacaoUsuario[] @relation("UsuarioPara")
   trocaPedidosDe TrocaPedido[] @relation("UsuarioDe")
   trocaPedidosPara TrocaPedido[] @relation("UsuarioPara")
+
+  @@map("usuarios")
 }
 
 model Cargo {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   nome        String     @unique @db.VarChar(100)
   descricao   String     @db.VarChar(100)
   usuariosCargos   UsuarioCargo[]
   cargosPermissoes CargoPermissao[]
+
+  @@map("cargos")
 }
 
 model Permissao {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   nome        String     @unique @db.VarChar(100)
   descricao   String     @db.VarChar(100)
   usuariosPermissoes UsuarioPermissao[]
   cargosPermissoes CargoPermissao[]
+
+  @@map("permissoes")
 }
 
 model UsuarioCargo {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   usuarioId   String     @default(uuid())
-  cargoId     Int
+  cargoId     String
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
+
+  @@map("usuarios_cargos")
 }
 
 model UsuarioPermissao {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   usuarioId   String     @default(uuid())
-  permissaoId Int
+  permissaoId String
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
+
+  @@map("usuarios_permissoes")
 }
 
 model CargoPermissao {
-  id          Int        @id @default(autoincrement())
-  cargoId     Int
-  permissaoId Int
+  id          String        @id @default(uuid())
+  cargoId     String
+  permissaoId String
   cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
   permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
+
+  @@map("cargos_permissoes")
 }
 
 model LivroDesejado {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   usuarioId   String     @default(uuid())
   titulo      String     @db.VarChar(200)
   autor       String     @db.VarChar(100)
   linkCapa    String?    @db.VarChar(100)
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("livros_desejados")
 }
 
 model Livro {
-  id          Int        @id @default(autoincrement())
+  id          String        @id @default(uuid())
   titulo      String     @db.VarChar(200)
   autor       String     @db.VarChar(100)
   usuarioId   String     @default(uuid())
@@ -88,24 +102,28 @@ model Livro {
   avaliacaoLivros AvaliacaoLivro[]
   trocaPedidosDe TrocaPedido[] @relation("LivroDe")
   trocaPedidosPara TrocaPedido[] @relation("LivroPara")
+
+  @@map("livros")
 }
 
 model AvaliacaoLivro {
-  id          Int        @id @default(autoincrement())
-  livroId     Int
+  id          String        @id @default(uuid())
+  livroId     String
   usuarioId   String     @default(uuid())
   avaliacao   Decimal      @db.Decimal(3, 1)
   comentario  String?    @db.VarChar(500)
   livro       Livro      @relation(fields: [livroId], references: [id], onDelete: Cascade)
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("avaliacao_livros")
 }
 
 model TrocaPedido {
-  id              Int        @id @default(autoincrement())
+  id              String        @id @default(uuid())
   usuarioDeId     String     @default(uuid())
-  livroDeId       Int
+  livroDeId       String
   usuarioParaId   String     @default(uuid())
-  livroParaId     Int
+  livroParaId     String
   status          String     @default("pendente") @db.VarChar(10)
   criadoEm        DateTime   @default(now())
   atualizadoEm    DateTime   @default(now())
@@ -114,11 +132,13 @@ model TrocaPedido {
   usuarioPara     Usuario    @relation("UsuarioPara", fields: [usuarioParaId], references: [id], onDelete: Cascade)
   livroPara       Livro      @relation("LivroPara", fields: [livroParaId], references: [id], onDelete: Cascade)
   reputacoes      ReputacaoUsuario[]
+
+  @@map("trocas_pedidos")
 }
 
 model ReputacaoUsuario {
-  id              Int        @id @default(autoincrement())
-  trocaId         Int
+  id              String        @id @default(uuid())
+  trocaId         String
   usuarioDeId     String     @default(uuid())
   usuarioParaId   String     @default(uuid())
   avaliacao       Decimal      @db.Decimal(3, 1)
@@ -126,4 +146,6 @@ model ReputacaoUsuario {
   troca           TrocaPedido @relation(fields: [trocaId], references: [id])
   usuarioDe       Usuario    @relation("UsuarioDe", fields: [usuarioDeId], references: [id], onDelete: Cascade)
   usuarioPara     Usuario    @relation("UsuarioPara", fields: [usuarioParaId], references: [id], onDelete: Cascade)
+
+  @@map("reputacao_usuarios")
 }
