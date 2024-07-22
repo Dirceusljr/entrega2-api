@@ -2,6 +2,7 @@
   "name": "backend-api",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
@@ -12,6 +13,7 @@
   "description": "Entrega 2 do Bootcamp da Avanti - Backend API",
   "dependencies": {
     "@prisma/client": "^5.17.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "uuid": "^10.0.0"
