@@ -5,6 +5,6 @@ import UsuariosController from "../controllers/usuariosController.js";
 const router = Router();
 
 router
-    .get('/', UsuariosController.teste);
+    .post('/usuarios', UsuariosController.criarNovo);
 
 export default router;
