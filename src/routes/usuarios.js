@@ -7,7 +7,7 @@ const router = Router();
 router
     .get('/usuarios', UsuariosController.buscarTodosOsUsuarios)
     .get('/usuarios/:id', UsuariosController.buscarUsuarioPorId)
-    .post('/usuarios', UsuariosController.criarNovo)
+    .post('/usuarios', UsuariosController.cadastrarUsuario)
     .put('/usuarios/:id', UsuariosController.editarUsuario)
     .delete('/usuarios/:id', UsuariosController.deletarUsuarioPorId)
 

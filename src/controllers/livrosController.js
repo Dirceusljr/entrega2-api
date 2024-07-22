@@ -31,6 +31,75 @@ class LivrosController {
       throw new Error("Houve algum erro no banco de dados.");
     }
   }
+
+  static async buscarTodosOsLivros(req, res) {
+    try {
+        const listaLivros = await livrosServices.buscarTodosOsLivros();
+
+        res.status(200).send(listaLivros);
+    } catch (erro) {
+        res.status(500).send({ erro: erro.message });
+    }
+}
+
+static async buscarLivroPorId(req, res) {
+    const { id } = req.params;
+
+    if (!id) {
+        throw new Error('Id é obrigatório');
+    }
+
+    try {
+        const livro = await livrosServices.buscarLivroPorId({ id });
+
+        res.status(200).send(livro);
+    } catch (erro) {
+        res.status(500).send({ erro: erro.message });
+    }
+}
+
+static async editarLivro(req, res) {
+    const { id } = req.params;
+    let { titulo, autor, usuarioId, linkCapa, editora, genero, paginas, avaliacao, disponibilidade } =
+    req.body;
+
+    if (!id) {
+        throw new Error('Id é obrigatório');
+    }
+
+    if (paginas) {
+        paginas = parseInt(paginas);
+    }
+
+
+    try {
+        const livroAtualizado = await livrosServices.editarLivro({ id, titulo, autor, usuarioId, linkCapa, editora, genero, paginas, avaliacao, disponibilidade });
+
+        res.status(200).send(livroAtualizado);
+    } catch (erro) {
+        res.status(500).send({ erro: erro.message });
+    }
+}
+
+static async deletarLivro(req, res) {
+    const { id } = req.params;
+
+    if (!id) {
+        throw new Error('Id é obrigatório');
+    }
+
+    try {
+        const livroDeletado = await livrosServices.deletarLivro({ id });
+
+        res.status(200).send({
+            message: "Livro deletado com sucesso!",
+            livroDeletado: livroDeletado
+        })
+        
+    } catch (erro) {
+        res.status(500).send({ erro: erro.message });
+    }
+}
 }
 
 export default LivrosController;

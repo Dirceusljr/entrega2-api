@@ -3,7 +3,7 @@ import UsuariosServices from "../services/usuariosServices.js";
 const usuariosServices = new UsuariosServices();
 
 class UsuariosController {
-    static async criarNovo(req, res) {
+    static async cadastrarUsuario(req, res) {
         const { nome, email, senha } = req.body;
 
         if (!nome || !email || !senha) {
@@ -11,7 +11,7 @@ class UsuariosController {
         }
 
         try {
-            const novoUsuario = await usuariosServices.criarNovo({nome, email, senha});
+            const novoUsuario = await usuariosServices.cadastrarUsuario({nome, email, senha});
 
             res.status(201).send({message:'Registro criado com sucesso', novoUsuario})
         } catch (erro) {
