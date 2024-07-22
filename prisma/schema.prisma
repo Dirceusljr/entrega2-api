@@ -12,7 +12,7 @@ model Usuario {
   nome        String     @db.VarChar(100)
   email       String     @unique @db.VarChar(100)
   senha       String     @db.VarChar(100)
-  reputacao   Decimal?     @db.Decimal(3, 1)
+  reputacao   Decimal?     @db.Decimal(3, 1) @default(5.0)
   usuariosCargos   UsuarioCargo[]
   usuariosPermissoes UsuarioPermissao[]
   livrosDesejados LivroDesejado[]
@@ -96,7 +96,7 @@ model Livro {
   editora     String?    @db.VarChar(100)
   genero      String?    @db.VarChar(100)
   paginas     Int?
-  avaliacao   Decimal?     @db.Decimal(3, 1)
+  avaliacao   Decimal?     @db.Decimal(3, 1) @default(5.0)
   disponibilidade Boolean @default(true)
   usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
   avaliacaoLivros AvaliacaoLivro[]
