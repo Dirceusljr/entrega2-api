@@ -6,6 +6,8 @@ const router = Router();
 
 router
     .get('/usuarios', UsuariosController.buscarTodosOsUsuarios)
-    .post('/usuarios', UsuariosController.criarNovo);
+    .get('/usuarios/:id', UsuariosController.buscarUsuarioPorId)
+    .post('/usuarios', UsuariosController.criarNovo)
+    .put('/usuarios/:id', UsuariosController.atualizarUsuario)
 
 export default router;

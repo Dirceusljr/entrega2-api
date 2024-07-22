@@ -28,6 +28,39 @@ class UsuariosController {
             res.status(500).send({ erro: erro.message });
         }
     }
+
+    static async buscarUsuarioPorId(req, res) {
+        const { id } = req.params;
+
+        if (!id) {
+            throw new Error('Id é obrigatório');
+        }
+
+        try {
+            const usuario = await usuariosServices.buscarUsuarioPorId({ id });
+
+            res.status(200).send(usuario);
+        } catch (erro) {
+            res.status(500).send({ erro: erro.message });
+        }
+    }
+
+    static async atualizarUsuario(req, res) {
+        const { id } = req.params;
+        const { nome, email, reputacao } = req.body;
+
+        if (!id) {
+            throw new Error('Id é obrigatório');
+        }
+
+        try {
+            const usuarioAtualizado = await usuariosServices.atualizarUsuario({ id, nome, email, reputacao });
+
+            res.status(200).send(usuarioAtualizado);
+        } catch (erro) {
+            res.status(500).send({ erro: erro.message });
+        }
+    }
 }
 
 export default UsuariosController;

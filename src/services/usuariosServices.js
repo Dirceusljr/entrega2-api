@@ -44,6 +44,51 @@ class UsuariosServices {
             throw new Error('Houve algum erro no banco de dados.')  
         }
     }
+
+    async buscarUsuarioPorId(dto) {
+        const { id } = dto;
+    
+        try {
+            const usuario = await prisma.usuario.findUnique({
+                where: {
+                    id
+                }
+            })
+
+            if(!usuario) {
+                throw new Error('Usuário não encontrado');
+            }
+
+            return usuario;
+        } catch (error) {
+            throw new Error('Houve algum erro no banco de dados.');
+        }
+    }
+
+    async atualizarUsuario(dto) {
+        const { id, nome, email, reputacao } = dto;
+
+        try {
+            const usuarioAtualizado = await prisma.usuario.update({
+                where: {
+                    id
+                },
+                data: {
+                    nome,
+                    email,
+                    reputacao
+                }
+            })
+
+            if(!usuarioAtualizado) {
+                throw new Error('Usuário não encontrado');
+            }
+
+            return usuarioAtualizado;
+        } catch (error) {
+            throw new Error('Houve algum erro no banco de dados.');
+        }
+    }
 }
 
 export default UsuariosServices;
