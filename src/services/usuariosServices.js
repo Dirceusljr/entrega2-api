@@ -2,7 +2,7 @@ import { hash } from "bcrypt";
 import prisma from "../../prisma/prismaClient.js";
 
 class UsuariosServices {
-    async criarNovo(dto) {
+    async cadastrarUsuario(dto) {
 
         const usuario = await prisma.usuario.findUnique({
             where: {
