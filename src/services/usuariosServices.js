@@ -65,7 +65,7 @@ class UsuariosServices {
         }
     }
 
-    async atualizarUsuario(dto) {
+    async editarUsuario(dto) {
         const { id, nome, email, reputacao } = dto;
 
         try {
@@ -86,6 +86,26 @@ class UsuariosServices {
 
             return usuarioAtualizado;
         } catch (error) {
+            throw new Error('Houve algum erro no banco de dados.');
+        }
+    }
+
+    async deletarUsuarioPorId(dto) {
+        const { id } = dto;
+
+        try {
+            const usuarioDeletado = await prisma.usuario.delete({
+                where: {
+                    id
+                },
+                select: {
+                    nome: true,
+                    email: true
+                }
+            })
+            
+            return usuarioDeletado;
+        } catch (erro) {
             throw new Error('Houve algum erro no banco de dados.');
         }
     }

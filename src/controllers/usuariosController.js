@@ -45,7 +45,7 @@ class UsuariosController {
         }
     }
 
-    static async atualizarUsuario(req, res) {
+    static async editarUsuario(req, res) {
         const { id } = req.params;
         const { nome, email, reputacao } = req.body;
 
@@ -54,9 +54,29 @@ class UsuariosController {
         }
 
         try {
-            const usuarioAtualizado = await usuariosServices.atualizarUsuario({ id, nome, email, reputacao });
+            const usuarioAtualizado = await usuariosServices.editarUsuario({ id, nome, email, reputacao });
 
             res.status(200).send(usuarioAtualizado);
+        } catch (erro) {
+            res.status(500).send({ erro: erro.message });
+        }
+    }
+
+    static async deletarUsuarioPorId(req, res) {
+        const { id } = req.params;
+
+        if (!id) {
+            throw new Error('Id é obrigatório');
+        }
+
+        try {
+            const usuarioDeletado = await usuariosServices.deletarUsuarioPorId({ id });
+
+            res.status(200).send({
+                message: "Usuário deletado com sucesso!",
+                usuarioDeletado
+            })
+            
         } catch (erro) {
             res.status(500).send({ erro: erro.message });
         }
