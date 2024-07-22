@@ -18,6 +18,16 @@ class UsuariosController {
             res.status(500).send({ erro: erro.message });
         }
     }
+
+    static async buscarTodosOsUsuarios(req, res) {
+        try {
+            const listaUsuarios = await usuariosServices.buscarTodosOsUsuarios();
+
+            res.status(200).send(listaUsuarios);
+        } catch (erro) {
+            res.status(500).send({ erro: erro.message });
+        }
+    }
 }
 
 export default UsuariosController;
