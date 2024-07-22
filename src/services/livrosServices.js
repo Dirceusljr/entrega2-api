@@ -62,6 +62,26 @@ async buscarLivroPorId(dto) {
     }
 }
 
+async buscarLivrosPorUsuarioId(dto) {
+    const { usuarioId } = dto;
+
+    try {
+        const listaLivros = await prisma.livro.findMany({
+            where: {
+                usuarioId
+            }
+        })
+
+        if(!listaLivros) {
+            throw new Error('Livros não encontrados.');
+        }
+
+        return listaLivros;
+    } catch (error) {
+        throw new Error('Houve algum erro no banco de dados.');
+    }
+}
+
 async editarLivro(dto) {
     const { id, titulo, autor, usuarioId, linkCapa, editora, genero, paginas, avaliacao, disponibilidade } =
     dto;
