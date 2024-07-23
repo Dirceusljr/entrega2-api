@@ -1,5 +1,5 @@
 import { Router } from "express";
-import CargosController from "../controllers/cargoController.js";
+import CargosController from "../controllers/cargosController.js";
 
 
 const cargosController = new CargosController();
