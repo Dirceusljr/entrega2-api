@@ -30,7 +30,7 @@ class LivrosController {
 
       res.status(201).send({message:'Registro criado com sucesso', novoLivro})
     } catch (erro) {
-      throw new Error("Houve algum erro no banco de dados.");
+      res.status(500).send({ erro: erro.message });
     }
   }
 
