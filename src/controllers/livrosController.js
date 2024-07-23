@@ -160,8 +160,6 @@ static async cadastrarLivroParaUsuario(req, res) {
     let { titulo, autor, linkCapa, editora, genero, paginas, avaliacao, disponibilidade } =
       req.body;
 
-      console.log()
-
     if (!id || !usuarioId) {
       throw new Error("Campos obrigatórios não preenchidos.");
     }

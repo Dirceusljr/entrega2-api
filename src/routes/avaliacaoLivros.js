@@ -8,8 +8,9 @@ const router = Router();
 router
     .get('/avaliacaoLivros', (req, res) => avaliacaoLivrosController.pegaTodos(req, res))
     .get('/avaliacaoLivros/:id', (req, res) => avaliacaoLivrosController.pegaUmPorId(req, res))
-    .get('/avaliacaoLivros/usuario/:usuarioId', (req, res) => avaliacaoLivrosController.pegaUm(req, res)) //teste
-    .post('/avaliacaoLivros', (req, res) => avaliacaoLivrosController.criaNovo(req, res));
+    .post('/avaliacaoLivros', (req, res) => avaliacaoLivrosController.criaNovo(req, res))
+    .put('/avaliacaoLivros/:id', (req, res) => avaliacaoLivrosController.atualiza(req, res))
+    .delete('/avaliacaoLivros/:id', (req, res) => avaliacaoLivrosController.exclui(req, res))
 
 
 export default router;
