@@ -27,7 +27,7 @@ class UsuariosServices {
             return novoUsuario;
             
         } catch (erro) {
-            throw new Error('Erro ao cadastrar usuário.')
+            throw new Error(erro.message);
         }
     }
 
@@ -41,7 +41,7 @@ class UsuariosServices {
 
             return listaUsuarios;
         } catch (erro) {
-            throw new Error('Houve algum erro no banco de dados.')  
+            throw new Error(erro.message)  
         }
     }
 
@@ -60,8 +60,8 @@ class UsuariosServices {
             }
 
             return usuario;
-        } catch (error) {
-            throw new Error('Houve algum erro no banco de dados.');
+        } catch (erro) {
+            throw new Error(erro.message);
         }
     }
 
@@ -85,8 +85,8 @@ class UsuariosServices {
             }
 
             return usuarioAtualizado;
-        } catch (error) {
-            throw new Error('Houve algum erro no banco de dados.');
+        } catch (erro) {
+            throw new Error(erro.message);
         }
     }
 
@@ -106,7 +106,7 @@ class UsuariosServices {
             
             return usuarioDeletado;
         } catch (erro) {
-            throw new Error('Houve algum erro no banco de dados.');
+            throw new Error(erro.message);
         }
     }
 }
