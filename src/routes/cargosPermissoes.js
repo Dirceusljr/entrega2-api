@@ -7,11 +7,11 @@ const cargosPermissoesController = new CargosPermissoesController();
 const router = Router();
 
 router
-    .get('/cargosPermissoes', (req, res) => cargosPermissoesController.pegaTodos(req, res))
-    .get('/cargosPermissoes/:id', (req, res) => cargosPermissoesController.pegaUmPorId(req, res))
-    .post('/cargosPermissoes', (req, res) => cargosPermissoesController.criaNovo(req, res))
-    .put('/cargosPermissoes/:id', (req, res) => cargosPermissoesController.atualiza(req, res))
-    .delete('/cargosPermissoes/:id', (req, res) => cargosPermissoesController.exclui(req, res))
+    .get('/cargos-permissoes', (req, res) => cargosPermissoesController.pegaTodos(req, res))
+    .get('/cargos-permissoes/:id', (req, res) => cargosPermissoesController.pegaUmPorId(req, res))
+    .post('/cargos-permissoes', (req, res) => cargosPermissoesController.criaNovo(req, res))
+    .put('/cargos-permissoes/:id', (req, res) => cargosPermissoesController.atualiza(req, res))
+    .delete('/cargos-permissoes/:id', (req, res) => cargosPermissoesController.exclui(req, res))
 
 
 export default router;
