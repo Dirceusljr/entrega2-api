@@ -30,7 +30,7 @@ class LivrosController {
 
       res.status(201).send({message:'Registro criado com sucesso', novoLivro})
     } catch (erro) {
-      throw new Error("Houve algum erro no banco de dados.");
+      res.status(500).send({ erro: erro.message });
     }
   }
 
@@ -159,8 +159,6 @@ static async cadastrarLivroParaUsuario(req, res) {
     const { usuarioId, id } = req.params;
     let { titulo, autor, linkCapa, editora, genero, paginas, avaliacao, disponibilidade } =
       req.body;
-
-      console.log()
 
     if (!id || !usuarioId) {
       throw new Error("Campos obrigatórios não preenchidos.");

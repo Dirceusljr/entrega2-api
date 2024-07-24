@@ -24,7 +24,7 @@ class LivrosServices {
 
       return novoLivro;
     } catch (erro) {
-      throw new Error("Houve algum erro no banco de dados.");
+      throw new Error(erro.message);
     }
   }
   
@@ -38,7 +38,7 @@ class LivrosServices {
 
         return listaLivros;
     } catch (erro) {
-        throw new Error('Houve algum erro no banco de dados.')  
+        throw new Error(erro.message);  
     }
 }
 
@@ -57,8 +57,8 @@ async buscarLivroPorId(dto) {
         }
 
         return livro;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
+    } catch (erro) {
+        throw new Error(erro.message);
     }
 }
 
@@ -77,8 +77,8 @@ async buscarLivrosPorUsuarioId(dto) {
         }
 
         return listaLivros;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
+    } catch (erro) {
+        throw new Error(erro.message);
     }
 }
 
@@ -108,8 +108,8 @@ async editarLivro(dto) {
         }
 
         return livroAtualizado;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
+    } catch (erro) {
+        throw new Error(erro.message);
     }
 }
 
@@ -130,7 +130,7 @@ async deletarLivro(dto) {
         
         return livroDeletado;
     } catch (erro) {
-        throw new Error('Houve algum erro no banco de dados.');
+        throw new Error(erro.message);
     }
 }
 }
