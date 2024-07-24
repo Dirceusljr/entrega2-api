@@ -1,9 +1,14 @@
 import { Router } from "express";
 import UsuariosController from "../controllers/usuariosController.js";
 import LivrosController from "../controllers/livrosController.js";
+import autenticado from "../middlewares/autenticado.js";
 
 
 const router = Router();
+
+router.use(
+    autenticado
+)
 
 router
     .get('/usuarios', UsuariosController.buscarTodosOsUsuarios)

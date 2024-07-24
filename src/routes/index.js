@@ -10,10 +10,12 @@ import reputacaoUsuarios from "./reputacaoUsuarios.js";
 import trocaPedidos from "./trocaPedidos.js";
 import usuarioCargos from "./usuarioCargos.js";
 import usuarioPermissoes from "./usuarioPermissoes.js";
+import auth from "./authRoute.js"
 
 const router = (app) => {
     app.use(
     express.json(),
+    auth,
     usuarios,
     livros,
     trocaPedidos,
