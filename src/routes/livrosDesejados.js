@@ -5,11 +5,11 @@ import LivrosDesejadosController from "../controllers/livrosDesejadosController.
 const router = Router();
 
 router
-    .get('/livrosDesejados', LivrosDesejadosController.buscarTodosLivrosDesejados)
-    .get('/livrosDesejados/:id', LivrosDesejadosController.buscarLivroDesejadoPorId)
-    .post('/livrosDesejados', LivrosDesejadosController.cadastrarLivroDesejado)
-    .put('/livrosDesejados/:id', LivrosDesejadosController.editarLivroDesejadoPorId)
-    .delete('/livrosDesejados/:id', LivrosDesejadosController.deletarLivroDesejadoPorId)
+    .get('/livros-desejados', LivrosDesejadosController.buscarTodosLivrosDesejados)
+    .get('/livros-desejados/:id', LivrosDesejadosController.buscarLivroDesejadoPorId)
+    .post('/livros-desejados', LivrosDesejadosController.cadastrarLivroDesejado)
+    .put('/livros-desejados/:id', LivrosDesejadosController.editarLivroDesejadoPorId)
+    .delete('/livros-desejados/:id', LivrosDesejadosController.deletarLivroDesejadoPorId)
 
 
 export default router;
