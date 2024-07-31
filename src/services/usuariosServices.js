@@ -1,5 +1,4 @@
 import { hash } from "bcrypt";
-import prisma from "../../prisma/prismaClient.js";
 import Services from "./services.js";
 import UsuarioRepository from "../repositories/usuariosRepository.js";
 
@@ -14,9 +13,8 @@ async criaNovoRegistro(dados) {
     const usuario = await usuarioRepository.pegaUm({
         email: dados.email,
     });
-    console.log("Resultado da busca do usuário:", usuario);
+
     if (usuario.length > 0) {
-        console.log("Usuário já cadastrado:", usuario);
         throw new Error("Usuário já cadastrado");
     }
 

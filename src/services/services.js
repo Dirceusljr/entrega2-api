@@ -5,54 +5,36 @@ class Services {
 
     async pegaTodosOsRegistros() {
         const lista = await this.entidadeRepository.pegaTodosOsRegistros();
-        
-        if(!lista) {
-            throw new Error('Nenhum registro encontrado');
-        }
         return lista
     }
 
     async pegaUmRegistroPorId(id) {
         const registro = await this.entidadeRepository.pegaUmRegistroPorId(id);
-
-        if(!registro) {
-            throw new Error('Registro não encontrado');
-        }
         return registro;
     }
     
     async pegaUm(where) {
         const registro = await this.entidadeRepository.pegaUm(where);
-    
-        if(!registro) {
-            throw new Error('Registro não encontrado');
-        }
         return registro;
     }
 
     async contaRegistros(options) {
-        return await this.entidadeRepository.contaRegistros(options);
+        const numeroDeRegistros = await this.entidadeRepository.contaRegistros(options);
+        return numeroDeRegistros
     };
 
     async criaNovoRegistro(dados) {
-        return await this.entidadeRepository.criaNovoRegistro(dados);
+        const novoRegistro = await this.entidadeRepository.criaNovoRegistro(dados);
+        return novoRegistro
     };
 
     async atualizaRegistro(dadosAtualizados, where) {
         const registroAtualizado = await this.entidadeRepository.atualizaRegistro(dadosAtualizados, where);
-        
-        if(!registroAtualizado) {
-            throw new Error('Registro não encontrado');
-        }
         return registroAtualizado;
     }
     
     async excluiRegistro(where) {
         const registroDeletado = await this.entidadeRepository.excluiRegistro(where);
-    
-        if(!registroDeletado) {
-            throw new Error('Registro não encontrado');
-        }
         return registroDeletado;
     }
 
