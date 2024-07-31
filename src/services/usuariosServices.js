@@ -1,114 +1,36 @@
 import { hash } from "bcrypt";
 import prisma from "../../prisma/prismaClient.js";
+import Services from "./services.js";
+import UsuarioRepository from "../repositories/usuariosRepository.js";
 
-class UsuariosServices {
-    async cadastrarUsuario(dto) {
+const usuarioRepository = new UsuarioRepository();
 
-        const usuario = await prisma.usuario.findUnique({
-            where: {
-                email: dto.email
-            }
-        })
+class UsuarioServices extends Services {
+  constructor() {
+    super(usuarioRepository);
+  }
 
-        if (usuario) {
-            throw new Error('Usuário já cadastrado');
-        }
-
-        try {
-            const senhaCriptografada = await hash(dto.senha, 8);
-            const novoUsuario = await prisma.usuario.create({
-                data: {
-                    nome: dto.nome,
-                    email: dto.email,
-                    senha: senhaCriptografada
-                }
-            })
-
-            return novoUsuario;
-            
-        } catch (erro) {
-            throw new Error(erro.message);
-        }
+async criaNovoRegistro(dados) {
+    const usuario = await usuarioRepository.pegaUm({
+        email: dados.email,
+    });
+    console.log("Resultado da busca do usuário:", usuario);
+    if (usuario.length > 0) {
+        console.log("Usuário já cadastrado:", usuario);
+        throw new Error("Usuário já cadastrado");
     }
 
-    async buscarTodosOsUsuarios() {
-        try {
-            const listaUsuarios = await prisma.usuario.findMany();
-
-            if(!listaUsuarios) {
-                throw new Error('Nenhum usuário encontrado');
-            }
-
-            return listaUsuarios;
-        } catch (erro) {
-            throw new Error(erro.message)  
-        }
-    }
-
-    async buscarUsuarioPorId(dto) {
-        const { id } = dto;
-    
-        try {
-            const usuario = await prisma.usuario.findUnique({
-                where: {
-                    id
-                }
-            })
-
-            if(!usuario) {
-                throw new Error('Usuário não encontrado');
-            }
-
-            return usuario;
-        } catch (erro) {
-            throw new Error(erro.message);
-        }
-    }
-
-    async editarUsuario(dto) {
-        const { id, nome, email, reputacao } = dto;
-
-        try {
-            const usuarioAtualizado = await prisma.usuario.update({
-                where: {
-                    id
-                },
-                data: {
-                    nome,
-                    email,
-                    reputacao
-                }
-            })
-
-            if(!usuarioAtualizado) {
-                throw new Error('Usuário não encontrado');
-            }
-
-            return usuarioAtualizado;
-        } catch (erro) {
-            throw new Error(erro.message);
-        }
-    }
-
-    async deletarUsuarioPorId(dto) {
-        const { id } = dto;
-
-        try {
-            const usuarioDeletado = await prisma.usuario.delete({
-                where: {
-                    id
-                },
-                select: {
-                    nome: true,
-                    email: true
-                }
-            })
-            
-            return usuarioDeletado;
-        } catch (erro) {
-            throw new Error(erro.message);
-        }
+    try {
+        const senhaCriptografada = await hash(dados.senha, 8);
+        const novoUsuario = await usuarioRepository.criaNovoRegistro({
+            ...dados,
+            senha: senhaCriptografada,
+        });
+        return novoUsuario;
+    } catch (erro) {
+        throw new Error(erro.message);
     }
 }
+}
 
-export default UsuariosServices;
+export default UsuarioServices;
