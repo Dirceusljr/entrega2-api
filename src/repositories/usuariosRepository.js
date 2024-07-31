@@ -48,6 +48,21 @@ class UsuarioRepository extends Repository {
         });
     }
 
+    async pegaUmCompleto(where) {
+        return await prisma['usuario'].findMany({
+           where: {
+            ...where
+           },
+           select: {
+               id: true,
+               nome: true,
+               email: true,
+               reputacao: true,
+               senha: true
+           }
+        });
+    }
+
     async contaRegistros(options) {
         return await prisma['usuario'].count({
             ...options
