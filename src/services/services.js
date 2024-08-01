@@ -1,69 +1,41 @@
-import prisma from "../../prisma/prismaClient.js";
-
 class Services {
-    constructor(nomeDoModelo) {
-        this.model = nomeDoModelo;
+    constructor(entidadeRepository) {
+        this.entidadeRepository = entidadeRepository;
     }
 
-    async pegaTodosOsRegistros( where = {} ) {
-        return await prisma[this.model].findMany({
-            where: {
-                ...where
-            }
-        });
+    async pegaTodosOsRegistros() {
+        const lista = await this.entidadeRepository.pegaTodosOsRegistros();
+        return lista
     }
 
     async pegaUmRegistroPorId(id) {
-        return await prisma[this.model].findUnique({
-            where: {
-                id
-            }
-        })
+        const registro = await this.entidadeRepository.pegaUmRegistroPorId(id);
+        return registro;
     }
-
+    
     async pegaUm(where) {
-        return await prisma[`${this.model}`].findMany({
-           where: {
-            ...where
-           }
-        });
+        const registro = await this.entidadeRepository.pegaUm(where);
+        return registro;
     }
 
     async contaRegistros(options) {
-        return await prisma[`${this.model}`].count({
-            ...options
-        });
+        const numeroDeRegistros = await this.entidadeRepository.contaRegistros(options);
+        return numeroDeRegistros
     };
 
     async criaNovoRegistro(dados) {
-        return await prisma[`${this.model}`].create({
-            data:{
-                ...dados
-            }
-        })
+        const novoRegistro = await this.entidadeRepository.criaNovoRegistro(dados);
+        return novoRegistro
     };
 
     async atualizaRegistro(dadosAtualizados, where) {
-        const registroAtualizado = await prisma[`${this.model}`].update({
-            data: {
-                ...dadosAtualizados
-            },
-            where: {
-                ...where
-            }
-        });
-
+        const registroAtualizado = await this.entidadeRepository.atualizaRegistro(dadosAtualizados, where);
         return registroAtualizado;
     }
-
+    
     async excluiRegistro(where) {
-        const registroExcluido = await prisma[`${this.model}`].delete({
-            where: {
-                ...where
-            }
-        });
-
-        return registroExcluido;
+        const registroDeletado = await this.entidadeRepository.excluiRegistro(where);
+        return registroDeletado;
     }
 
 }

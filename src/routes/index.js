@@ -1,15 +1,12 @@
 import express from "express";
-import usuarios from "./usuarios.js";
-import livros from "./livros.js";
-import livrosDesejados from "./livrosDesejados.js";
-import avaliacaoLivros from "./avaliacaoLivros.js";
-import cargos from "./cargos.js";
-import permissoes from "./permissoes.js";
-import cargosPermissoes from "./cargosPermissoes.js";
-import reputacaoUsuarios from "./reputacaoUsuarios.js";
-import trocaPedidos from "./trocaPedidos.js";
-import usuarioCargos from "./usuarioCargos.js";
-import usuarioPermissoes from "./usuarioPermissoes.js";
+import usuarios from "./usuariosRoute.js";
+import livros from "./livrosRoute.js";
+import livrosDesejados from "./livrosDesejadosRoute.js";
+import avaliacaoLivros from "./avaliacaoLivrosRoute.js";
+import cargos from "./cargosRoute.js";
+import reputacaoUsuarios from "./reputacaoUsuariosRoute.js";
+import trocaPedidos from "./trocaPedidosRoute.js";
+import usuarioCargos from "./usuarioCargosRoute.js";
 import auth from "./authRoute.js"
 
 const router = (app) => {
@@ -22,10 +19,7 @@ const router = (app) => {
     livrosDesejados,
     avaliacaoLivros,
     cargos,
-    permissoes,
     usuarioCargos,
-    usuarioPermissoes,
-    cargosPermissoes,
     reputacaoUsuarios
     );
 }
