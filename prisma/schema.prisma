@@ -14,7 +14,6 @@ model Usuario {
   senha       String     @db.VarChar(100)
   reputacao   Decimal?     @db.Decimal(3, 1) @default(5.0)
   usuariosCargos   UsuarioCargo[]
-  usuariosPermissoes UsuarioPermissao[]
   livrosDesejados LivroDesejado[]
   livros       Livro[]
   avaliacaoLivros AvaliacaoLivro[]
@@ -31,19 +30,8 @@ model Cargo {
   nome        String     @unique @db.VarChar(100)
   descricao   String     @db.VarChar(100)
   usuariosCargos   UsuarioCargo[]
-  cargosPermissoes CargoPermissao[]
 
   @@map("cargos")
-}
-
-model Permissao {
-  id          String        @id @default(uuid())
-  nome        String     @unique @db.VarChar(100)
-  descricao   String     @db.VarChar(100)
-  usuariosPermissoes UsuarioPermissao[]
-  cargosPermissoes CargoPermissao[]
-
-  @@map("permissoes")
 }
 
 model UsuarioCargo {
@@ -54,26 +42,6 @@ model UsuarioCargo {
   cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
 
   @@map("usuarios_cargos")
-}
-
-model UsuarioPermissao {
-  id          String        @id @default(uuid())
-  usuarioId   String     @default(uuid())
-  permissaoId String
-  usuario     Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
-
-  @@map("usuarios_permissoes")
-}
-
-model CargoPermissao {
-  id          String        @id @default(uuid())
-  cargoId     String
-  permissaoId String
-  cargo       Cargo      @relation(fields: [cargoId], references: [id], onDelete: Cascade)
-  permissao   Permissao  @relation(fields: [permissaoId], references: [id], onDelete: Cascade)
-
-  @@map("cargos_permissoes")
 }
 
 model LivroDesejado {
@@ -119,7 +87,7 @@ model AvaliacaoLivro {
 }
 
 model TrocaPedido {
-  id              String        @id @default(uuid())
+  id              String     @id @default(uuid())
   usuarioDeId     String     @default(uuid())
   livroDeId       String
   usuarioParaId   String     @default(uuid())
