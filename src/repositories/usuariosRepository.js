@@ -103,7 +103,7 @@ class UsuarioRepository extends Repository {
     }
 
     async excluiRegistro(where) {
-        const registroExcluido = await prisma[`${this.model}`].delete({
+        const registroExcluido = await prisma['usuario'].delete({
             where: {
                 ...where
             },
