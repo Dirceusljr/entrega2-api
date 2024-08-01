@@ -87,7 +87,7 @@ model AvaliacaoLivro {
 }
 
 model TrocaPedido {
-  id              String        @id @default(uuid())
+  id              String     @id @default(uuid())
   usuarioDeId     String     @default(uuid())
   livroDeId       String
   usuarioParaId   String     @default(uuid())
