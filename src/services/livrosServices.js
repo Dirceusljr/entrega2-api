@@ -1,138 +1,85 @@
-import prisma from "../../prisma/prismaClient.js";
+import Services from "./services.js";
+import UsuarioServices from "./usuariosServices.js";
+import LivrosRepository from "../repositories/livrosRepository.js";
 
-class LivrosServices {
-  async cadastrarLivro(dto) {
-    const { titulo, autor, usuarioId, linkCapa, editora, genero, paginas } =
-      dto;
+const livrosRepository = new LivrosRepository();
+const usuariosServices = new UsuarioServices();
+
+class LivrosServices extends Services {
+  constructor() {
+    super(livrosRepository);
+  }
+
+  async pegaLivrosPorUsuarioId(usuarioId) {
+
+    const usuario = await usuariosServices.pegaUmRegistroPorId(usuarioId);
+
+    if(!usuario) {
+      throw new Error("Usuário não encontrado.");
+    }
 
     try {
-      const novoLivro = await prisma.livro.create({
-        data: {
-          titulo,
-          autor,
-          usuarioId,
-          linkCapa,
-          editora,
-          genero,
-          paginas,
-        },
-      });
+      const listaLivros = await livrosRepository.pegaTodosOsRegistros({usuarioId});
 
-      if (!novoLivro) {
-        throw new Error("Erro ao cadastrar livro.");
+      if (!listaLivros) {
+        throw new Error("Livros não encontrados.");
       }
 
-      return novoLivro;
+      return listaLivros;
     } catch (erro) {
-      throw new Error("Houve algum erro no banco de dados.");
+      throw new Error(erro.message);
     }
   }
-  
-  async buscarTodosOsLivros() {
+
+  async cadastraLivroParaUsuario(dados) {
+
+    const usuario = await usuariosServices.pegaUmRegistroPorId(dados.usuarioId);
+
+    if(!usuario) {
+      throw new Error("Usuário não encontrado.");
+    }
+
     try {
-        const listaLivros = await prisma.livro.findMany();
+        const novoLivro = await livrosRepository.criaNovoRegistro(dados);
 
-        if(!listaLivros) {
-            throw new Error('Nenhum livro encontrado');
-        }
+        return novoLivro;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+  }
 
-        return listaLivros;
+  async atualizaLivroDoUsuario(dados, id) {
+
+    const usuario = await usuariosServices.pegaUmRegistroPorId(dados.usuarioId);
+
+    if (!usuario) {
+      throw new Error("Usuário não encontrado.");
+    }
+
+    try {
+      const livroAtualizado = await livrosRepository.atualizaRegistro(dados, {id});
+
+      return livroAtualizado;
     } catch (erro) {
-        throw new Error('Houve algum erro no banco de dados.')  
+      throw new Error(erro.message);
     }
-}
+  }
 
-async buscarLivroPorId(dto) {
-    const { id } = dto;
+  async excluiLivroDoUsuario(usuarioId, id) {
+    const usuario = await usuariosServices.pegaUmRegistroPorId(usuarioId);
+
+    if (!usuario) {
+      throw new Error("Usuário não encontrado.");
+    }
 
     try {
-        const livro = await prisma.livro.findUnique({
-            where: {
-                id
-            }
-        })
+      const livroDeletado = await livrosRepository.excluiRegistro({id});
 
-        if(!livro) {
-            throw new Error('Livro não encontrado');
-        }
-
-        return livro;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
-    }
-}
-
-async buscarLivrosPorUsuarioId(dto) {
-    const { usuarioId } = dto;
-
-    try {
-        const listaLivros = await prisma.livro.findMany({
-            where: {
-                usuarioId
-            }
-        })
-
-        if(!listaLivros) {
-            throw new Error('Livros não encontrados.');
-        }
-
-        return listaLivros;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
-    }
-}
-
-async editarLivro(dto) {
-    const { id, titulo, autor, usuarioId, linkCapa, editora, genero, paginas, avaliacao, disponibilidade } =
-    dto;
-    try {
-        const livroAtualizado = await prisma.livro.update({
-            where: {
-                id
-            },
-            data: {
-                titulo,
-                autor,
-                usuarioId,
-                linkCapa,
-                editora,
-                genero,
-                paginas,
-                avaliacao,
-                disponibilidade
-            }
-        })
-
-        if(!livroAtualizado) {
-            throw new Error('Livro não encontrado');
-        }
-
-        return livroAtualizado;
-    } catch (error) {
-        throw new Error('Houve algum erro no banco de dados.');
-    }
-}
-
-async deletarLivro(dto) {
-    const { id } = dto;
-
-    try {
-        const livroDeletado = await prisma.livro.delete({
-            where: {
-                id
-            },
-            select: {
-                titulo: true,
-                autor: true,
-                usuarioId: true
-            }
-        })
-        
-        return livroDeletado;
+      return livroDeletado;
     } catch (erro) {
-        throw new Error('Houve algum erro no banco de dados.');
+      throw new Error(erro.message);
     }
-}
+  }
 }
 
 export default LivrosServices;
