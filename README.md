@@ -38,19 +38,15 @@
 
 <p  align="center">
 
-<a  href="#-sobre-o-projeto">Sobre</a> •
+• <a  href="#-sobre-o-projeto">Sobre</a>
 
-<a  href="#-entregas-do-projeto">Entregas do Projeto</a> •
+• <a  href="#-entregas-do-projeto">Entregas do Projeto</a>
 
-<a  href="#-como-executar-o-projeto">Como executar</a> •
+• <a  href="#-como-executar-o-projeto">Como executar</a>
 
-<a  href="#-tecnologias">Tecnologias</a> •
+• <a  href="#-tecnologias">Tecnologias</a>
 
-<a  href="#-contribuidores">Contribuidores</a> •
-
-<a  href="#-autor">Autor</a> •
-
-<a  href="#user-content--licença">Licença</a>
+• <a  href="#-autores">Autores</a>
 
 </p>
 
@@ -70,10 +66,9 @@ Ele servirá como o backend da aplicação para as operações necessárias de g
   
 
 ---
-
   
 
-## ⚙️ Entregas do Projeto
+## 📑 Entregas do projeto
 
   
 
@@ -159,7 +154,7 @@ $  npm  run  dev
 
 <p  align="center">
 
-<a  href="https://github.com/LibraryLoops/entrega2-api/blob/main/Insomnia_Entrega2-API.json"  target="_blank"><img  src="https://insomnia.rest/images/run.svg"  alt="Run in Insomnia"></a>
+<a  href="https://github.com/Dirceusljr/entrega2-api/blob/dev/Insomnia_Entrega2-API.json"  target="_blank"><img  src="https://insomnia.rest/images/run.svg"  alt="Run in Insomnia"></a>
 
 </p>
 
@@ -219,7 +214,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/141691213?v=4"  width="100px;"  alt=""/>
 <br  />
 <sub><b>Dirceu dos Santos</b></sub></a>  <a  href="https://github.com/Dirceusljr"  title="Github">🚀</a>
-<br  />
+<br />
+<br />
 
 [![Linkedin Badge](https://img.shields.io/badge/-Dirceu-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/dirceusljr/)
 [![Github Badge](https://img.shields.io/badge/-Dirceusljr-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Dirceusljr)](https://github.com/Dirceusljr)
