@@ -14,7 +14,7 @@ async criaNovoRegistro(dados) {
         email: dados.email,
     });
 
-    if (usuario.length > 0) {
+    if (usuario) {
         throw new Error("Usuário já cadastrado");
     }
 
