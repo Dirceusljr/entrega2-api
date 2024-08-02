@@ -221,6 +221,17 @@ As seguintes ferramentas foram usadas na construção do projeto:
 [![Github Badge](https://img.shields.io/badge/-Dirceusljr-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/Dirceusljr)](https://github.com/Dirceusljr)
 [![Gmail Badge](https://img.shields.io/badge/-dirceusljr@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:dirceusljr@gmail.com@gmail.com)](mailto:dirceusljr@gmail.com)
 
-  
+
+<a  href="https://github.com/alexandrosousadev">
+
+<img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/106404030?v=4"  width="100px;"  alt=""/>
+<br  />
+<sub><b>Alexandro Sousa</b></sub></a>  <a  href="https://github.com/alexandrosousadev"  title="Github">🚀</a>
+<br />
+<br />
+
+[![Linkedin Badge](https://img.shields.io/badge/-Alexandro-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/alexandrosousa009/)](https://www.linkedin.com/in/alexandrosousa009/)
+[![Github Badge](https://img.shields.io/badge/-Alexandro-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/alexandrosousadev)](https://github.com/alexandrosousadev)
+[![Gmail Badge](https://img.shields.io/badge/-alexandrosousa01@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:alexandrosousa01@gmail.com@gmail.com)](mailto:alexandrosousa01@gmail.com)
 
 ---
