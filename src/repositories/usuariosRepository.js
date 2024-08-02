@@ -35,7 +35,7 @@ class UsuarioRepository extends Repository {
     }
 
     async pegaUm(where) {
-        return await prisma['usuario'].findMany({
+        return await prisma['usuario'].findUnique({
            where: {
             ...where
            },

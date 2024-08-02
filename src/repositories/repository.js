@@ -31,7 +31,7 @@ class Repository {
 
   async pegaUm(where) {
     try {
-      return await prisma[`${this.model}`].findMany({
+      return await prisma[`${this.model}`].findUnique({
         where: {
           ...where,
         },
