@@ -28,8 +28,15 @@ class LivrosController extends Controller {
   async cadastraLivroParaUsuario(req, res) {
     const { usuarioId } = req.params;
     const { titulo, autor, linkCapa, editora, genero, paginas } = req.body;
-
+    
     try {
+      const livroExistente = await livrosServices.pegaLivrosPorUsuarioId(usuarioId);
+      const livroDuplicado = livroExistente.find(livro => livro.titulo === titulo);
+
+      if(livroDuplicado) {
+          return res.status(400).send({ message: "Livro já cadastrado!" });
+      }
+
       const novoLivro = await livrosServices.cadastraLivroParaUsuario({
         titulo,
         autor,
@@ -74,6 +81,15 @@ class LivrosController extends Controller {
     };
 
     try {
+      const registroAtual = await livrosServices.pegaLivrosPorUsuarioId(
+        usuarioId, 
+        titulo
+    );
+
+      if(registroAtual) {
+        return res.status(409).json({ message: "O livro já existe para este usuário." });
+    }
+
       const livroAtualizado = await livrosServices.atualizaLivroDoUsuario(
         dados,
         id
