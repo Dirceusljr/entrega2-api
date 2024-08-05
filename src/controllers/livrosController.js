@@ -10,7 +10,7 @@ class LivrosController extends Controller {
     super(livrosServices);
   }
 
-  async pegaLivrosPorUsuarioId(req, res) {
+  async pegaLivrosPorUsuarioId(req, res, next) {
     const { usuarioId } = req.params;
 
     try {
@@ -18,7 +18,8 @@ class LivrosController extends Controller {
         usuarioId
       );
 
-      res.status(200).send(listaLivros);
+      req.resultados = listaLivros
+      next();
     } catch (erro) {
       res.status(500).send({ erro: erro.message });
     }

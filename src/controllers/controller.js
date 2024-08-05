@@ -3,10 +3,12 @@ class Controller {
         this.entidadeService = entidadeService;
     }
 
-    async pegaTodos (req, res) {
+    async pegaTodos (req, res, next) {
         try {
             const listaEntidades = await this.entidadeService.pegaTodosOsRegistros();
-            return res.status(200).send(listaEntidades);
+
+            req.resultados = listaEntidades;
+            next();
         } catch (erro) {
             return res.status(500).send({ erro: erro.message });
         }

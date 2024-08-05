@@ -6,6 +6,7 @@ import { celebrate, Segments } from "celebrate";
 
 import usuarioSchema from "../utils/schemas/usuarioSchema.js";
 import validadorSchema from "../utils/schemas/validadorSchema.js";
+import paginar from "../middlewares/paginar.js";
 
 const router = Router();
 
@@ -19,9 +20,9 @@ router.post("/usuarios",celebrate({[Segments.BODY]: validadorSchema(usuarioSchem
 router.use(autenticado);
 
 router
-  .get("/usuarios", (req, res) => usuariosController.pegaTodos(req, res))
+  .get("/usuarios", (req, res, next) => usuariosController.pegaTodos(req, res, next), paginar)
   .get("/usuarios/:id", (req, res) => usuariosController.pegaUmPorId(req, res))
-  .get("/usuarios/:usuarioId/livros", (req, res) => livrosController.pegaLivrosPorUsuarioId(req, res))
+  .get("/usuarios/:usuarioId/livros", (req, res, next) => livrosController.pegaLivrosPorUsuarioId(req, res, next), paginar)
   .post("/usuarios/:usuarioId/livros", (req, res) => livrosController.cadastraLivroParaUsuario(req, res))
   .put("/usuarios/:id", celebrate({[Segments.BODY]: validadorSchema(usuarioSchema, "senha", true)}), (req, res) => usuariosController.atualiza(req, res))
   .put("/usuarios/:usuarioId/livros/:id", (req, res) => livrosController.atualizaLivroDoUsuario(req, res))
