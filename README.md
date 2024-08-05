@@ -22,7 +22,7 @@
 
 <h1  align="center">
 
-<img  alt="Banner do projeto"  title="#Entrega 2 - Desenvolvendo a API"  src="https://i.ibb.co/bvr09CR/Banner-Library-Loops.jpg"  />
+<img  alt="Banner do projeto"  title="#Entrega 2 - Desenvolvendo a API"  src="https://i.ibb.co/6DMDWxV/Frame-1.png"  />
 
 </h1>
 
@@ -213,7 +213,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 <img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/141691213?v=4"  width="100px;"  alt=""/>
 <br  />
-<sub><b>Dirceu dos Santos</b></sub></a>  <a  href="https://github.com/Dirceusljr"  title="Github">🚀</a>
+<sub><b>Dirceu dos Santos</b></sub></a>  <a  href="https://github.com/Dirceusljr"  title="Github">🏊</a>
 <br />
 <br />
 
@@ -233,5 +233,21 @@ As seguintes ferramentas foram usadas na construção do projeto:
 [![Linkedin Badge](https://img.shields.io/badge/-Alexandro-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/alexandrosousa009/)](https://www.linkedin.com/in/alexandrosousa009/)
 [![Github Badge](https://img.shields.io/badge/-Alexandro-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/alexandrosousadev)](https://github.com/alexandrosousadev)
 [![Gmail Badge](https://img.shields.io/badge/-alexandrosousa01@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:alexandrosousa01@gmail.com@gmail.com)](mailto:alexandrosousa01@gmail.com)
+
+
+<a href="https://github.com/heloisacativo">
+
+<img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/118030725?v=4"  width="100px;"  alt=""/>
+<br />
+<sub><b>Heloisa Cativo</b><sub></a> <a  href="https://github.com/heloisacativo" <title="Github">🐭</a>
+<br />
+<br />
+
+[![Linkedin Badge](https://img.shields.io/badge/Heloisa-blue?style=flat-square&logo=Linkedin&logoColor=logoColor%3Dwhite&link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fhelenacativo%2F)](https://www.linkedin.com/in/helenacativo/)
+[![Github Badge](https://img.shields.io/badge/heloisacativo-000000?style=flat-square&logo=GitHub&logoColor=logoColor%3Dwhite&link=https%3A%2F%2Fgithub.com%2Fheloisacativo)](https://github.com/heloisacativo)
+[![Gmail Badge](https://img.shields.io/badge/heloisacativo%40gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto%3Aheloisacativo%40gmail.com)](mailto:heloisacativo@gmail.com)
+<br />
+<br />
+
 
 ---

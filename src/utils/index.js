@@ -7,4 +7,4 @@ export { validacaoLivrosAvaliacao, validacaoAtualizarAvaliacaoLivros} from './va
 export { validacaoCargos, validacaoParametroCargosId } from './validacao/cargosValidacao.js'
 export { validacaoUsuarioCargos } from './validacao/usuarioCargosValidacao.js'
 export { validacaoAuth } from './validacao/authValidacao.js'
-export { default as gerenciadorDeErros } from './gerenciadorDeErros.js';
+export { default as gerenciadorDeErros } from '../middlewares/gerenciadorDeErros.js';

@@ -2,7 +2,7 @@ import { Router } from "express";
 import TrocaPedidosController from "../controllers/trocaPedidosController.js";
 import paginar from "../middlewares/paginar.js";
 import { celebrate } from 'celebrate';
-import { gerenciadorDeErros, validacaoTrocaPedido, validacaoTrocaPedidoParametro } from '../middlewares/index.js'
+import { gerenciadorDeErros, validacaoTrocaPedido, validacaoTrocaPedidoParametro } from '../utils/index.js'
 
 const trocaPedidosController = new TrocaPedidosController();
 

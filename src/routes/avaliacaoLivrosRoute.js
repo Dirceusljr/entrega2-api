@@ -3,7 +3,7 @@ import AvaliacaoLivrosController from "../controllers/avaliacaoLivrosController.
 import paginar from "../middlewares/paginar.js";
 import autorizacao from "../middlewares/autorizacao.js";
 import { celebrate } from 'celebrate';
-import { gerenciadorDeErros, validacaoLivrosAvaliacao, validacaoAtualizarAvaliacaoLivros, validacaoParametroLivroId } from '../middlewares/index.js'
+import { gerenciadorDeErros, validacaoLivrosAvaliacao, validacaoAtualizarAvaliacaoLivros, validacaoParametroLivroId } from '../utils/index.js'
 
 
 const avaliacaoLivrosController = new AvaliacaoLivrosController();

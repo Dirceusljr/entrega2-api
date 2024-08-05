@@ -2,7 +2,7 @@ import { Router } from "express";
 import ReputacaoUsuariosController from "../controllers/reputacaoUsuariosController.js";
 import paginar from "../middlewares/paginar.js";
 import { celebrate } from 'celebrate';
-import { gerenciadorDeErros, validacaoCriarReputacao, validacaoAtualizarReputacao, validacaoParametroUsuarioId, validacaoParametroExcluirUsuarioId } from '../middlewares/index.js'
+import { gerenciadorDeErros, validacaoCriarReputacao, validacaoAtualizarReputacao, validacaoParametroUsuarioId, validacaoParametroExcluirUsuarioId } from '../utils/index.js'
 
 const reputacaoUsuariosController = new ReputacaoUsuariosController();
 
