@@ -14,7 +14,7 @@ class AuthServices {
       email: dto.email
     })
 
-    if (!usuario) {
+    if (!usuario || usuario.length === 0) {
       throw new Error("Usuário não cadastrado.");
     }
 
