@@ -12,6 +12,6 @@ router
     .get('/livros-desejados/:id', (req, res) => livrosDesejadosController.pegaUmPorId(req, res))
     .post('/livros-desejados', (req, res) => livrosDesejadosController.criaNovo(req, res))
     .put('/livros-desejados/:id', (req, res) => livrosDesejadosController.atualiza(req, res))
-    .delete('/livros-desejados/:id', (req, res) => livrosDesejadosController.exclui(req, res))
+    .delete('/livros-desejados/:id',  (req, res) => livrosDesejadosController.exclui(req, res))
 
 export default router;
