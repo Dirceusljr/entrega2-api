@@ -3,7 +3,7 @@ import CargosController from "../controllers/cargosController.js";
 import paginar from "../middlewares/paginar.js";
 import autorizacao from "../middlewares/autorizacao.js";
 import { celebrate } from 'celebrate';
-import { gerenciadorDeErros, validacaoCargos, validacaoParametroCargosId } from '../middlewares/index.js'
+import { gerenciadorDeErros, validacaoCargos, validacaoParametroCargosId } from '../utils/index.js'
 
 
 const cargosController = new CargosController();

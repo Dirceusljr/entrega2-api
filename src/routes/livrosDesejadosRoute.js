@@ -2,7 +2,7 @@ import { Router } from "express";
 import LivrosDesejadosController from "../controllers/livrosDesejadosController.js";
 import paginar from "../middlewares/paginar.js";
 import { celebrate } from 'celebrate';
-import { gerenciadorDeErros, validacaoLivrosDesejados, validacaoAtualizarLivrosDesejados,validacaoParametroLivroId } from '../middlewares/index.js'
+import { gerenciadorDeErros, validacaoLivrosDesejados, validacaoAtualizarLivrosDesejados,validacaoParametroLivroId } from '../utils/index.js'
 
 const livrosDesejadosController = new LivrosDesejadosController();
 
