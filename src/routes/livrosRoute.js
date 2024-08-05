@@ -1,11 +1,11 @@
 import { Router } from "express";
+import { celebrate } from 'celebrate';
 import LivrosController from "../controllers/livrosController.js";
 import paginar from "../middlewares/paginar.js";
 import autorizacao from "../middlewares/autorizacao.js";
-import { validacaoCriarLivro, gerenciadorDeErros, atualizarLivroDoUsuario, validacaoParametroLivroId } from '../middlewares/index.js';
-const livrosController = new LivrosController();
-import { celebrate } from 'celebrate';
+import { validacaoCriarLivro, gerenciadorDeErros, atualizarLivroDoUsuario, validacaoParametroLivroId } from '../utils/index.js';
 
+const livrosController = new LivrosController();
 const router = Router();
 
 router

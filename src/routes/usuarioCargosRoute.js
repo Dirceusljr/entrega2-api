@@ -3,7 +3,7 @@ import UsuarioCargosController from "../controllers/usuarioCargosController.js";
 import paginar from "../middlewares/paginar.js";
 import autorizacao from "../middlewares/autorizacao.js";
 import { celebrate } from "celebrate";
-import { gerenciadorDeErros, validacaoUsuarioCargos, validacaoParametroUsuarioId } from '../middlewares/index.js';
+import { gerenciadorDeErros, validacaoUsuarioCargos, validacaoParametroUsuarioId } from '../utils/index.js';
 
 const usuarioCargosController = new UsuarioCargosController();
 
