@@ -5,6 +5,4 @@ const app = express();
 
 router(app);
 
-
-//teste
 export default app;

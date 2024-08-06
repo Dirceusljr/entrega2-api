@@ -22,6 +22,13 @@ const router = (app) => {
     usuarioCargos,
     reputacaoUsuarios
     );
+
+    app.use((req,res,next) => {
+        res.status(404).json({
+            status: 'Erro',
+            message: 'Rota não encontrada'
+        })
+    });
 }
 
 
