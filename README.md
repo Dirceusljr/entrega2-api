@@ -197,51 +197,51 @@ A API expõe os seguintes *endpoints* a partir da *base URL*  `localhost:3000`:
 
 ### Endpoints  de  `/cargos`
 
--  `GET /cargos`  -  Obtém  todos  os  livros.
--  `GET /cargos/:id`  -  Obtém  um  livro  por  ID.
--  `POST /cargos`  -  Cria  um  novo  livro.
--  `PUT /cargos/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /cargos/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /cargos`  -  Obtém  todos  os  cargos.
+-  `GET /cargos/:id`  -  Obtém  um  cargo  por  ID.
+-  `POST /cargos`  -  Cria  um  novo  cargo.
+-  `PUT /cargos/:id`  -  Atualiza  um  cargo  por  ID.
+-  `DELETE /cargos/:id`  -  Exclui  um  cargo  por  ID.
 
 ### Endpoints  de  `/troca-pedidos`
 
--  `GET /troca-pedidos`  -  Obtém  todos  os  livros.
--  `GET /troca-pedidos/:id`  -  Obtém  um  livro  por  ID.
--  `POST /troca-pedidos`  -  Cria  um  novo  livro.
--  `PUT /troca-pedidos/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /troca-pedidos/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /troca-pedidos`  -  Obtém  todos  os  pedidos de troca.
+-  `GET /troca-pedidos/:id`  -  Obtém  um  pedido de troca  por  ID.
+-  `POST /troca-pedidos`  -  Cria  um  novo  pedido de troca.
+-  `PUT /troca-pedidos/:id`  -  Atualiza  um  pedido de troca  por  ID.
+-  `DELETE /troca-pedidos/:id`  -  Exclui  um  pedido de troca  por  ID.
 
 ### Endpoints  de  `/avaliacao-livros`
 
--  `GET /avaliacao-livros`  -  Obtém  todos  os  livros.
--  `GET /avaliacao-livros/:id`  -  Obtém  um  livro  por  ID.
--  `POST /avaliacao-livros`  -  Cria  um  novo  livro.
--  `PUT /avaliacao-livros/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /avaliacao-livros/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /avaliacao-livros`  -  Obtém  todos  as avaliações de livros.
+-  `GET /avaliacao-livros/:id`  -  Obtém  uma avaliação de um livro  por  ID.
+-  `POST /avaliacao-livros`  -  Cria  uma nova avaliação de um  livro.
+-  `PUT /avaliacao-livros/:id`  -  Atualiza  uma avaliação de um livro  por  ID.
+-  `DELETE /avaliacao-livros/:id`  -  Exclui  uma avaliação de um livro  por  ID.
 
 ### Endpoints  de  `/livros-desejados`
 
--  `GET /livros-desejados`  -  Obtém  todos  os  livros.
--  `GET /livros-desejados/:id`  -  Obtém  um  livro  por  ID.
--  `POST /livros-desejados`  -  Cria  um  novo  livro.
--  `PUT /livros-desejados/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /livros-desejados/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /livros-desejados`  -  Obtém  todos  os  livros desejados.
+-  `GET /livros-desejados/:id`  -  Obtém  um  livro desejado  por  ID.
+-  `POST /livros-desejados`  -  Cria  um  novo  livro desejado.
+-  `PUT /livros-desejados/:id`  -  Atualiza  um  livro desejado  por  ID.
+-  `DELETE /livros-desejados/:id`  -  Exclui  um  livro desejado  por  ID.
 
 ### Endpoints  de  `/reputacao-usuarios`
 
--  `GET /reputacao-usuarios`  -  Obtém  todos  os  livros.
--  `GET /reputacao-usuarios/:id`  -  Obtém  um  livro  por  ID.
--  `POST /reputacao-usuarios`  -  Cria  um  novo  livro.
--  `PUT /reputacao-usuarios/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /reputacao-usuarios/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /reputacao-usuarios`  -  Obtém  todas as reaputações (avaliação entre usuários) de usuário.
+-  `GET /reputacao-usuarios/:id`  -  Obtém  uma avaliação de um usuário  por  ID.
+-  `POST /reputacao-usuarios`  -  Cria  uma  nova avaliação de um usuário.
+-  `PUT /reputacao-usuarios/:id`  -  Atualiza  uma avaliação de um usuário  por  ID.
+-  `DELETE /reputacao-usuarios/:id`  -  Exclui  uma avaliação de um usuário  por  ID.
 
 ### Endpoints  de  `/usuario-cargos`
 
--  `GET /usuario-cargos`  -  Obtém  todos  os  livros.
--  `GET /usuario-cargos/:id`  -  Obtém  um  livro  por  ID.
--  `POST /usuario-cargos`  -  Cria  um  novo  livro.
--  `PUT /usuario-cargos/:id`  -  Atualiza  um  livro  por  ID.
--  `DELETE /usuario-cargos/:id`  -  Exclui  um  livro  por  ID.
+-  `GET /usuario-cargos`  -  Obtém  todos  os  cargos ddos usuários.
+-  `GET /usuario-cargos/:id`  -  Obtém  um  cargo de um usuário  por  ID.
+-  `POST /usuario-cargos`  -  Cria  um  novo  cargo de um usuário.
+-  `PUT /usuario-cargos/:id`  -  Atualiza  um  cargo de um usuário  por  ID.
+-  `DELETE /usuario-cargos/:id`  -  Exclui  um  cargo de um usuário  por  ID.
 
 ### Paginação - Parâmetros de Query 
 
