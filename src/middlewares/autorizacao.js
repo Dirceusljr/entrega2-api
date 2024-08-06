@@ -31,6 +31,10 @@ const autorizacao = (listaDeCargos = []) => {
       return res.status(401).send('Usuário não cadastrado.')
   }
 
+  if(!usuario.usuariosCargos[0]) {
+    return res.status(401).send('Usuário não possui cargo cadastrado.')
+  }
+
   const cargosCadastrado = usuario.usuariosCargos[0].cargo.nome
 
   
