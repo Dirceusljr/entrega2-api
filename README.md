@@ -44,6 +44,8 @@
 
 • <a  href="#-como-executar-o-projeto">Como executar</a>
 
+• <a  href="#-endpoints">Endpoints</a>
+
 • <a  href="#-tecnologias">Tecnologias</a>
 
 • <a  href="#-autores">Autores</a>
@@ -163,6 +165,97 @@ $  npm  run  dev
 
 ---
 
+## 📚 Endpoints
+
+  
+
+A API expõe os seguintes *endpoints* a partir da *base URL*  `localhost:3000`:
+
+### Endpoints de  `/auth`
+
+-   `POST /auth/login`  - Realiza o login de um usuário.
+
+### Endpoints de  `/usuarios`
+
+-   `POST /usuarios`  - Cria um novo usuário.
+-   `GET /usuarios`  - Obtém todos os usuários.
+-   `GET /usuarios/:id`  - Obtém um usuário por ID.
+-   `GET /usuarios/:usuarioId/livros`  - Obtém os livros de um usuário por ID.
+-   `POST /usuarios/:usuarioId/livros`  - Cadastra um livro para um usuário.
+-   `PUT /usuarios/:id`  - Atualiza um usuário por ID.
+-   `PUT /usuarios/:usuarioId/livros/:id`  - Atualiza um livro de um usuário por ID.
+-   `DELETE /usuarios/:id`  - Exclui um usuário por ID.
+-   `DELETE /usuarios/:usuarioId/livros/:id`  - Exclui um livro de um usuário por ID.
+
+### Endpoints de  `/livros`
+
+-   `GET /livros`  - Obtém todos os livros.
+-   `GET /livros/:id`  - Obtém um livro por ID.
+-   `POST /livros`  - Cria um novo livro.
+-   `PUT /livros/:id`  - Atualiza um livro por ID.
+-   `DELETE /livros/:id`  - Exclui um livro por ID.
+
+### Endpoints  de  `/cargos`
+
+-  `GET /cargos`  -  Obtém  todos  os  livros.
+-  `GET /cargos/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /cargos`  -  Cria  um  novo  livro.
+-  `PUT /cargos/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /cargos/:id`  -  Exclui  um  livro  por  ID.
+
+### Endpoints  de  `/troca-pedidos`
+
+-  `GET /troca-pedidos`  -  Obtém  todos  os  livros.
+-  `GET /troca-pedidos/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /troca-pedidos`  -  Cria  um  novo  livro.
+-  `PUT /troca-pedidos/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /troca-pedidos/:id`  -  Exclui  um  livro  por  ID.
+
+### Endpoints  de  `/avaliacao-livros`
+
+-  `GET /avaliacao-livros`  -  Obtém  todos  os  livros.
+-  `GET /avaliacao-livros/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /avaliacao-livros`  -  Cria  um  novo  livro.
+-  `PUT /avaliacao-livros/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /avaliacao-livros/:id`  -  Exclui  um  livro  por  ID.
+
+### Endpoints  de  `/livros-desejados`
+
+-  `GET /livros-desejados`  -  Obtém  todos  os  livros.
+-  `GET /livros-desejados/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /livros-desejados`  -  Cria  um  novo  livro.
+-  `PUT /livros-desejados/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /livros-desejados/:id`  -  Exclui  um  livro  por  ID.
+
+### Endpoints  de  `/reputacao-usuarios`
+
+-  `GET /reputacao-usuarios`  -  Obtém  todos  os  livros.
+-  `GET /reputacao-usuarios/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /reputacao-usuarios`  -  Cria  um  novo  livro.
+-  `PUT /reputacao-usuarios/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /reputacao-usuarios/:id`  -  Exclui  um  livro  por  ID.
+
+### Endpoints  de  `/usuario-cargos`
+
+-  `GET /usuario-cargos`  -  Obtém  todos  os  livros.
+-  `GET /usuario-cargos/:id`  -  Obtém  um  livro  por  ID.
+-  `POST /usuario-cargos`  -  Cria  um  novo  livro.
+-  `PUT /usuario-cargos/:id`  -  Atualiza  um  livro  por  ID.
+-  `DELETE /usuario-cargos/:id`  -  Exclui  um  livro  por  ID.
+
+### Paginação - Parâmetros de Query 
+
+-   `limite`  (opcional): Número de itens por página. Valor padrão é  `5`.
+-   `pagina`  (opcional): Número da página a ser retornada. Valor padrão é  `1`.
+-   `ordenacao`  (opcional): Campo e ordem de ordenação no formato  `campo:ordem`. Valor padrão é  `id:asc`.
+
+#### Exemplo de Uso
+
+    GET /endpoint?limite=10&pagina=2&ordenacao=nome:desc
+
+
+
+---
   
 
 ## 🛠 Tecnologias
@@ -196,8 +289,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 #### **Utilitários**
 
-- Editor: **[Visual Studio Code](https://code.visualstudio.com/)** → Extensions: **[SQLite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)**
-
+- Editor: **[Visual Studio Code](https://code.visualstudio.com/)**
 - Markdown: **[StackEdit](https://stackedit.io/)**, **[Markdown Emoji](https://gist.github.com/rxaviers/7360908)**
 
 - Teste de API: **[Insomnia](https://insomnia.rest/)**
@@ -249,5 +341,16 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <br />
 <br />
 
+<a  href="https://github.com/THIAGOFELIPEFEI">
+
+<img  style="border-radius: 50%;"  src="https://avatars.githubusercontent.com/u/104990579?v=4"  width="100px;"  alt=""/>
+<br  />
+<sub><b>Thiago Batista</b></sub></a>  <a  href="https://github.com/THIAGOFELIPEFEI"  title="Github">🚀</a>
+<br />
+<br />
+
+[![Linkedin Badge](https://img.shields.io/badge/-ThiagoBatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/thiago-ff-batista/)](https://www.linkedin.com/in/thiago-ff-batista/)
+[![Github Badge](https://img.shields.io/badge/-ThiagoBatista-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/THIAGOFELIPEFEI)](https://github.com/THIAGOFELIPEFEI)
+[![Gmail Badge](https://img.shields.io/badge/-thiagodexterpes@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:thiagodexterpes@gmail.com@gmail.com)](mailto:thiagodexterpes@gmail.com)
 
 ---
