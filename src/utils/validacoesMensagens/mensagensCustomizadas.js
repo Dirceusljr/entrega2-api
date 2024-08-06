@@ -11,7 +11,9 @@ const mensagensCustomizadas = (field) => {
         'number.precision': `O campo ${field} deve ter no máximo {#limit} casa decimal!`,
         'string.base': `O campo ${field} deve ser um texto!`,
         'string.guid': `O ${field} deve ser um UUID válido.`,
-        'custom': `Erro de validação personalizado para o campo ${field}.`
+        'custom': `Erro de validação personalizado para o campo ${field}.`,
+        'string.pattern.base': `${field} deve conter pelo menos um caractere alfanumérico, um símbolo especial e ter entre 6 e 20 caracteres`,
+        'any.only': `O campo ${field} deve ser igual a {#valids}`,
     };
 };
 
