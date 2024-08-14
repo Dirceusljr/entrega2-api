@@ -14,7 +14,7 @@ const router = Router();
 const usuariosController = new UsuariosController();
 const livrosController = new LivrosController();
 
-router.post("/usuarios", celebrate(validacaoCriarUsuario), (req, res) => usuariosController.criaNovo(req, res));
+router.post("/usuarios", celebrate(validacaoCriarUsuario), (req, res) => usuariosController.criaNovo(req, res))
 
 router.use(autenticado);
 
