@@ -1,13 +1,11 @@
 import { Joi, Segments } from 'celebrate';
 import { mensagensCustomizadas } from '../../utils/validacoesMensagens/mensagensCustomizadas.js';
 
-const regex = /^(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$/;
-
 const validacaoCriarUsuario = {
     [Segments.BODY]: Joi.object().keys({
         nome: Joi.string().min(2).max(200).required().messages(mensagensCustomizadas('nome')),
         email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'br'] } }).messages(mensagensCustomizadas('email')),
-        senha: Joi.string().min(6).max(100).pattern(new RegExp(regex)).required().messages(mensagensCustomizadas('senha')),
+        senha: Joi.string().min(6).max(100).required().messages(mensagensCustomizadas('senha')),
     }).options({ abortEarly: false})
 }
 
