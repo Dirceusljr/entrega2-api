@@ -23,9 +23,9 @@ router
   .get("/usuarios/:id", celebrate(validacaoParametroUsuarioId), (req, res) => usuariosController.pegaUmPorId(req, res))
   .get("/usuarios/:usuarioId/livros", celebrate(validacaoParametroUsuarioId), (req, res, next) => livrosController.pegaLivrosPorUsuarioId(req, res, next), paginar)
   .post("/usuarios/:usuarioId/livros", celebrate(validacaoCriarLivroDoUsuario), celebrate(validacaoParametroUsuarioId), (req, res) => livrosController.cadastraLivroParaUsuario(req, res))
-  .put("/usuarios/:id", autorizacao(["Dev","Admin"]), celebrate(validacaoAtualizarUsuario), celebrate(validacaoParametroUsuarioId), (req, res) => usuariosController.atualiza(req, res))
+  .put("/usuarios/:id", celebrate(validacaoAtualizarUsuario), celebrate(validacaoParametroUsuarioId), (req, res) => usuariosController.atualiza(req, res))
   .put("/usuarios/:usuarioId/livros/:id", celebrate(atualizarLivroDoUsuario), (req, res) => livrosController.atualizaLivroDoUsuario(req, res))
-  .delete("/usuarios/:id", autorizacao(["Dev","Admin"]), celebrate(validacaoParametroUsuarioId),  (req, res) => usuariosController.exclui(req, res))
+  .delete("/usuarios/:id", celebrate(validacaoParametroUsuarioId),  (req, res) => usuariosController.exclui(req, res))
   .delete("/usuarios/:usuarioId/livros/:id", celebrate(validacaoParametroUsuarioId), (req, res) => livrosController.excluiLivroDoUsuario(req, res));
 
 router.use(gerenciadorDeErros);
