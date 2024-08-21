@@ -13,7 +13,7 @@ router
     .get('/livros/:id', celebrate(validacaoParametroLivroId), (req, res) => livrosController.pegaUmPorId(req, res))
     .post('/livros', celebrate(validacaoCriarLivro), (req, res) => livrosController.criaNovo(req, res))
     .put('/livros/:id', celebrate(atualizarLivroDoUsuario), celebrate(validacaoParametroLivroId), (req, res) => livrosController.atualiza(req, res))
-    .delete('/livros/:id', autorizacao(["Dev","Admin"]), celebrate(validacaoParametroLivroId), (req, res) => livrosController.exclui(req, res))
+    .delete('/livros/:id', celebrate(validacaoParametroLivroId), (req, res) => livrosController.exclui(req, res))
 
 router.use(gerenciadorDeErros);
 
