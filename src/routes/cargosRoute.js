@@ -14,8 +14,8 @@ router
     .get('/cargos', (req, res, next) => cargosController.pegaTodos(req, res, next), paginar)
     .get('/cargos/:id', celebrate(validacaoParametroCargosId), (req, res) => cargosController.pegaUmPorId(req, res))
     .post('/cargos', celebrate(validacaoCargos), (req, res) => cargosController.criaNovo(req, res))
-    .put('/cargos/:id', autorizacao(["Dev","Admin"]), celebrate(validacaoCargos), celebrate(validacaoParametroCargosId), (req, res) => cargosController.atualiza(req, res))
-    .delete('/cargos/:id', autorizacao(["Dev","Admin"]), celebrate(validacaoParametroCargosId), (req, res) => cargosController.exclui(req, res))
+    .put('/cargos/:id', celebrate(validacaoCargos), celebrate(validacaoParametroCargosId), (req, res) => cargosController.atualiza(req, res))
+    .delete('/cargos/:id', celebrate(validacaoParametroCargosId), (req, res) => cargosController.exclui(req, res))
 
 
     router.use(gerenciadorDeErros);
