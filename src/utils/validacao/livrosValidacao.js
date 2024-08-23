@@ -30,9 +30,12 @@ const validacaoCriarLivroDoUsuario = {
 
 const atualizarLivroDoUsuario = {
     [Segments.BODY]: Joi.object().keys({
-        titulo: Joi.string().min(2).max(300).messages(mensagensCustomizadas('titulo')),
-        autor: Joi.string().messages(mensagensCustomizadas('autor')),
-        linkCapa: Joi.string().optional(),
+        titulo: Joi.string().min(2).max(300).required().messages(mensagensCustomizadas('titulo')),
+        autor: Joi. string().min(2).max(300).required().messages(mensagensCustomizadas('autor')),
+        linkCapa: Joi.string().optional().allow(null || ''),
+        editora: Joi.string().optional().allow(null || ''),
+        genero: Joi.string().optional().allow(null || ''),
+        paginas: Joi.number().optional().integer().allow(null),
         avaliacao: Joi.number().precision(1).min(0).max(5).allow(null).optional(),
         disponibilidade: Joi.boolean().messages(mensagensCustomizadas('disponibilidade'))
     })
