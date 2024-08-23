@@ -1,7 +1,10 @@
 async function paginar(req, res, next) {
     try {
-      let { limite = 5, pagina = 1, ordenacao = 'id:asc' } = req.query;
-  
+      let { limite, pagina, ordenacao = 'id:asc' } = req.query;
+      if(limite === undefined || pagina === undefined) {
+        return res.status(200).json(req.resultados);
+      }
+      
       let [campoOrdenacao, ordem] = ordenacao.split(':');
   
       limite = parseInt(limite);
