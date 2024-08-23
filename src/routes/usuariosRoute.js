@@ -3,8 +3,6 @@ import { celebrate } from "celebrate";
 import UsuariosController from "../controllers/usuariosController.js";
 import LivrosController from "../controllers/livrosController.js";
 import autenticado from "../middlewares/autenticado.js";
-import paginar from "../middlewares/paginar.js";
-import autorizacao from "../middlewares/autorizacao.js";
 import { gerenciadorDeErros, validacaoCriarUsuario, validacaoAtualizarUsuario, atualizarLivroDoUsuario, validacaoParametroUsuarioId } from '../utils/index.js';
 import { validacaoCriarLivroDoUsuario } from "../utils/validacao/livrosValidacao.js";
 
@@ -19,9 +17,9 @@ router.post("/usuarios", celebrate(validacaoCriarUsuario), (req, res) => usuario
 router.use(autenticado);
 
 router
-  .get("/usuarios", (req, res, next) => usuariosController.pegaTodos(req, res, next), paginar)
+  .get("/usuarios", (req, res, next) => usuariosController.pegaTodos(req, res, next))
   .get("/usuarios/:id", celebrate(validacaoParametroUsuarioId), (req, res) => usuariosController.pegaUmPorId(req, res))
-  .get("/usuarios/:usuarioId/livros", celebrate(validacaoParametroUsuarioId), (req, res, next) => livrosController.pegaLivrosPorUsuarioId(req, res, next), paginar)
+  .get("/usuarios/:usuarioId/livros", celebrate(validacaoParametroUsuarioId), (req, res, next) => livrosController.pegaLivrosPorUsuarioId(req, res, next))
   .post("/usuarios/:usuarioId/livros", celebrate(validacaoCriarLivroDoUsuario), celebrate(validacaoParametroUsuarioId), (req, res) => livrosController.cadastraLivroParaUsuario(req, res))
   .put("/usuarios/:id", celebrate(validacaoAtualizarUsuario), celebrate(validacaoParametroUsuarioId), (req, res) => usuariosController.atualiza(req, res))
   .put("/usuarios/:usuarioId/livros/:id", celebrate(atualizarLivroDoUsuario), (req, res) => livrosController.atualizaLivroDoUsuario(req, res))
